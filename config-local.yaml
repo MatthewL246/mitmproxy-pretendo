@@ -23,5 +23,5 @@ ssl_insecure: true
 tls_version_client_min: UNBOUNDED
 tls_version_server_min: UNBOUNDED
 
-# Allow connections to URLs that do not exist upstream
+# Allow connections to URLs that do not exist upstream (see https://github.com/MatthewL246/pretendo-docker/issues/243)
 connection_strategy: lazy
