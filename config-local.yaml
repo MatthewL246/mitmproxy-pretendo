@@ -22,3 +22,6 @@ ssl_insecure: true
 # Allow the console to use older TLS versions
 tls_version_client_min: UNBOUNDED
 tls_version_server_min: UNBOUNDED
+
+# Allow connections to URLs that do not exist upstream
+connection_strategy: lazy
