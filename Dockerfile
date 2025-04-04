@@ -12,7 +12,7 @@ ARG openssl_version="1.1.1w" openssl_dir="/opt/openssl" \
 
 # We use the mitmproxy image for the build stage to ensure that all dependencies
 # are at the right versions, even though mitmproxy itself is not used here.
-FROM mitmproxy/mitmproxy:10.4.2 AS openssl-build
+FROM mitmproxy/mitmproxy:11.0.2 AS openssl-build
 ARG openssl_version openssl_dir openssl_config_dir cryptography_dir
 
 # Install build dependencies
@@ -39,7 +39,7 @@ RUN . ${cryptography_dir}/venv/bin/activate && \
 
 # This is the main mitmproxy container that will be run. We use a new image so
 # the build tools are not left over in the final image.
-FROM mitmproxy/mitmproxy:10.4.2 AS mitmproxy
+FROM mitmproxy/mitmproxy:11.0.2 AS mitmproxy
 ARG openssl_dir cryptography_dir
 COPY --from=openssl-build ${openssl_dir} ${openssl_dir}
 COPY --from=openssl-build ${cryptography_dir}/venv/lib /usr/local/lib
